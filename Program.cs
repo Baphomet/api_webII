@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using webII_API.Context;
+using webII_API.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,10 @@ builder.Services.AddSwaggerGen();
 var connection = builder.Configuration.GetConnectionString("MySql");
 builder.Services.AddDbContext<Db>(options =>
     options.UseMySql(connection, ServerVersion.AutoDetect(connection)));
+
+builder.Services.AddScoped<ComandaService>();
+builder.Services.AddScoped<ProdutoService>();
+builder.Services.AddScoped<UsuarioService>();
 
 
 var app = builder.Build();
