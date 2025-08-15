@@ -50,7 +50,7 @@ namespace webII_API.Services
         }
         public async Task<string> DeleteComanda(Guid id)
         {
-            var comanda = await _context.Comandas.Include(c => c.Usuario).FirstOrDefaultAsync(c => c.Id.Equals(id));
+            var comanda = await _context.Comandas.FindAsync(id);
             if (comanda == null) return "Comanda não encontrada!";
 
             _context.Comandas.Remove(comanda);
