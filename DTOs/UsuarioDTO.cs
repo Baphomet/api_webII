@@ -2,5 +2,7 @@
 {
     public class UsuarioDTO
     {
+        public string Nome { get; set; }
+        public string Numero { get; set; }
     }
 }
